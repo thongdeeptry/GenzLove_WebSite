@@ -1,0 +1,26 @@
+[
+  {
+    "id": "1",
+    "status": "Chưa Xử Lý",
+    "id_send": "1",
+    "content": "Nó Đăng Ảnh Sẽ",
+    "id_report": "3",
+    "sex": "Nam"
+  },
+  {
+    "id": "2",
+    "status": "Hoàn Tất",
+    "id_send": "2",
+    "content": "Làm Phiền",
+    "id_report": "5",
+    "sex": "Nam"
+  },
+  {
+    "id": "3",
+    "status": "Hủy Yêu Cầu",
+    "id_send": "3",
+    "content": "Có Người Yêu",
+    "id_report": "1",
+    "sex": "Nam"
+  }
+]

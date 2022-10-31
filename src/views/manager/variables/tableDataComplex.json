@@ -1,0 +1,34 @@
+[
+  {
+    "name": "1",
+    "status": "Hoạt Động",
+    "date": "Ngô Thành Thông",
+    "progress": 75.5,
+    "follow": 1000000,
+    "sex": "Nam"
+  },
+  {
+    "name": "2",
+    "status": "Hoạt Động",
+    "date": "Đặng Văn Thịnh",
+    "progress": 25.5,
+    "follow": 10000000,
+    "sex": "Nam"
+  },
+  {
+    "name": "3",
+    "status": "Hoạt Động",
+    "date": "Thịnh Yêu Trí Nè",
+    "progress": 90,
+    "follow": 100000,
+    "sex": "Nam"
+  },
+  {
+    "name": "4",
+    "status": "Khóa",
+    "date": "Thông Love Mai",
+    "progress": 50.5,
+    "follow": 100000,
+    "sex": "Nữ"
+  }
+]
