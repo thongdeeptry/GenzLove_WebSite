@@ -11,15 +11,27 @@ import {
   useColorModeValue,
   Button,
 } from "@chakra-ui/react";
-import React, { useMemo } from "react";
 import {
   useGlobalFilter,
   usePagination,
   useSortBy,
   useTable,
 } from "react-table";
-
+import React, { useMemo, useState } from "react";
+import ReactDOM from "react-dom";
+import Modal from "react-modal";
 // Custom components
+import { initializeApp } from "firebase/app";
+import { firebaseConfig } from "../../../config";
+import {
+  getDatabase,
+  ref,
+  remove,
+  set,
+  onValue,
+  update,
+} from "firebase/database";
+import * as firebase from "firebase/database";
 import Card from "components/card/Card";
 import Menu from "components/menu/MainMenu";
 
@@ -27,7 +39,10 @@ import Menu from "components/menu/MainMenu";
 import { MdCheckCircle, MdCancel, MdOutlineError } from "react-icons/md";
 export default function ColumnsTable(props) {
   const { columnsData, tableData } = props;
-
+  const app = initializeApp(firebaseConfig);
+  if (!app.length) {
+    console.log("Kết nối thành công");
+  }
   const columns = useMemo(() => columnsData, [columnsData]);
   const data = useMemo(() => tableData, [tableData]);
   console.log("Dataa bên user --------> ", data);
@@ -51,8 +66,64 @@ export default function ColumnsTable(props) {
   } = tableInstance;
   initialState.pageSize = 5;
 
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+    },
+  };
+  const style = {
+    content: {
+      padding: 10,
+      borderColor: 1,
+    },
+  };
+  let subtitle;
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [idx, setidx] = useState();
+  const [noidungx, setnoidungx] = useState();
+  const [thaotacx, setthaotacx] = useState();
+  const openModal = () => {
+    setIsOpen(true);
+  };
+
+  const afterOpenModal = () => {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = "#f00";
+  };
+
+  const closeModal = () => {
+    setIsOpen(false);
+  };
+  const Yes = (idd, ndx, ttx) => {
+    setIsOpen(true);
+    setidx(idd);
+    setnoidungx(ndx);
+    setthaotacx(ttx);
+  };
+
+  const updateData = () => {
+    setIsOpen(false);
+    const db = getDatabase();
+    const reference = ref(db, "users/" + idx);
+    onValue(reference, (snapshot) => {
+      snapshot.forEach((childSnapshot) => {
+        const trangthai = noidungx;
+        update(reference, {
+          trangthai: trangthai,
+        });
+      });
+      console.log(thaotacx + " thành công");
+      alert(thaotacx + " tài khoản thành công");
+      window.location = "http://localhost:3000/";
+    });
+  };
   return (
     <Card
       direction="column"
@@ -60,6 +131,25 @@ export default function ColumnsTable(props) {
       px="0px"
       overflowX={{ sm: "scroll", lg: "hidden" }}
     >
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
+          Thông báo từ GenzLove
+        </h2>
+
+        <div>Bạn có chắc chắn muốn {thaotacx} tài khoản này ?</div>
+        <Flex direction={"row"} justifyContent={"space-between"}>
+          <button style={style} onClick={updateData}>
+            Có
+          </button>
+          <button onClick={updateData}>Không</button>
+        </Flex>
+      </Modal>
       <Flex px="25px" justify="space-between" mb="20px" align="center">
         <Text
           color={textColor}
@@ -111,9 +201,6 @@ export default function ColumnsTable(props) {
                   } else if (cell.column.Header === "TRẠNG THÁI") {
                     data = (
                       <Flex align="center">
-                        <Text color={textColor} fontSize="sm" fontWeight="700">
-                          {cell.value}
-                        </Text>
                         <Icon
                           w="24px"
                           h="24px"
@@ -137,6 +224,9 @@ export default function ColumnsTable(props) {
                               : MdCheckCircle
                           }
                         />
+                        <Text color={textColor} fontSize="sm" fontWeight="700">
+                          {cell.value}
+                        </Text>
                       </Flex>
                     );
                   } else if (cell.column.Header === "TÊN") {
@@ -161,7 +251,16 @@ export default function ColumnsTable(props) {
                     data = (
                       <Flex align="center">
                         <Button>Sửa</Button>
-                        <Button>Xóa</Button>
+                        <Button onClick={() => Yes(cell.value, "Khóa", "Khóa")}>
+                          Khóa
+                        </Button>
+                        <Button
+                          onClick={() =>
+                            Yes(cell.value, "Hoạt Động", "Mở Khóa")
+                          }
+                        >
+                          Mở
+                        </Button>
                       </Flex>
                     );
                   }

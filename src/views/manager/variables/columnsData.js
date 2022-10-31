@@ -75,11 +75,11 @@ export const columnsDataComplex = [
   },
   {
     Header: "TRẠNG THÁI",
-    accessor: "nghenghiep",
+    accessor: "trangthai",
   },
   {
     Header: "THAO TÁC",
-    accessor: "progress",
+    accessor: "thaotac",
   },
 ];
 export const columnsReport = [

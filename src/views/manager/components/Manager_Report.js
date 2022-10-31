@@ -13,7 +13,7 @@ import {
   Button,
   Alert,
 } from "@chakra-ui/react";
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import { initializeApp } from "firebase/app";
@@ -64,6 +64,9 @@ export default function ColumnsTable(props) {
 
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
+  const [idx, setidx] = useState();
+  const [noidungx, setnoidungx] = useState();
+  const [thaotacx, setthaotacx] = useState();
 
   const openModal = () => {
     setIsOpen(true);
@@ -98,16 +101,19 @@ export default function ColumnsTable(props) {
   initialState.pageSize = 5;
 
   const buttonMove = (data) => {
-    setIsOpen(true);
-  };
-  const Yes = (data) => {
-    setIsOpen(false);
     window.location = "" + data;
   };
-  const deleteData = (id, noidungx, thaotacx) => {
+  const Yes = (idd, ndx, ttx) => {
     setIsOpen(true);
+    setidx(idd);
+    setnoidungx(ndx);
+    setthaotacx(ttx);
+  };
+
+  const updateData = () => {
+    setIsOpen(false);
     const db = getDatabase();
-    const reference = ref(db, "reports/" + id);
+    const reference = ref(db, "reports/" + idx);
     onValue(reference, (childSnapshot) => {
       const id = childSnapshot.child("id").exportVal();
       const noidung = childSnapshot.child("noidung").exportVal();
@@ -141,6 +147,25 @@ export default function ColumnsTable(props) {
       px="0px"
       overflowX={{ sm: "scroll", lg: "hidden" }}
     >
+      <Modal
+        isOpen={modalIsOpen}
+        onAfterOpen={afterOpenModal}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
+          Thông báo từ GenzLove
+        </h2>
+
+        <div>Bạn có chắc chắn muốn {thaotacx} nội dung này ?</div>
+        <Flex direction={"row"} justifyContent={"space-between"}>
+          <button style={style} onClick={updateData}>
+            Có
+          </button>
+          <button onClick={closeModal}>Không</button>
+        </Flex>
+      </Modal>
       <Flex px="25px" justify="space-between" mb="20px" align="center">
         <Text
           color={textColor}
@@ -242,16 +267,12 @@ export default function ColumnsTable(props) {
                     data = (
                       <Flex align="center">
                         <Button
-                          onClick={() =>
-                            deleteData(cell.value, "Hoàn Tất", "Xử lý")
-                          }
+                          onClick={() => Yes(cell.value, "Hoàn Tất", "Xử lý")}
                         >
                           Xử Lý
                         </Button>
                         <Button
-                          onClick={() =>
-                            deleteData(cell.value, "Hủy Yêu Cầu", "Hủy")
-                          }
+                          onClick={() => Yes(cell.value, "Hủy Yêu Cầu", "Hủy")}
                         >
                           Hủy
                         </Button>
@@ -260,31 +281,6 @@ export default function ColumnsTable(props) {
                   } else if (cell.column.Header === "Link") {
                     data = (
                       <Flex align="center">
-                        <Modal
-                          isOpen={modalIsOpen}
-                          onAfterOpen={afterOpenModal}
-                          onRequestClose={closeModal}
-                          style={customStyles}
-                          contentLabel="Example Modal"
-                        >
-                          <h2 ref={(_subtitle) => (subtitle = _subtitle)}>
-                            Thông báo từ GenzLove
-                          </h2>
-
-                          <div>Bạn có chắc chắn muốn xóa nội dung này ?</div>
-                          <Flex
-                            direction={"row"}
-                            justifyContent={"space-between"}
-                          >
-                            <button
-                              style={style}
-                              onClick={() => Yes(cell.value)}
-                            >
-                              Có
-                            </button>
-                            <button onClick={closeModal}>Không</button>
-                          </Flex>
-                        </Modal>
                         <Button onClick={() => buttonMove(cell.value)}>
                           Xem
                         </Button>

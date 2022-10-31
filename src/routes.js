@@ -20,6 +20,7 @@ import RTL from "views/admin/rtl";
 import SignInCentered from "views/auth/signIn";
 import SignupCentered from "views/auth/signup";
 import Manager from "views/manager";
+import TickBlue from "views/support/tickblue";
 const routes = [
   {
     name: "Trang Chủ",
@@ -70,6 +71,13 @@ const routes = [
     path: "/settings",
     icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
     component: Manager,
+  },
+  {
+    name: "Đơn Hỗ Trợ",
+    layout: "/support",
+    path: "/tickblue",
+    icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
+    component: TickBlue,
   },
 ];
 

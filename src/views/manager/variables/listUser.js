@@ -20,6 +20,8 @@ onValue(reference, (snapshot) => {
     const gioitinh = childSnapshot.child("gioitinh").exportVal();
     const nghenghiep = childSnapshot.child("nghenghiep").exportVal();
     const ngaysinh = childSnapshot.child("ngaysinh").exportVal();
+    const thaotac = childSnapshot.child("thaotac").exportVal();
+    const trangthai = childSnapshot.child("trangthai").exportVal();
     data.push({
       id: id,
       name: name,
@@ -30,6 +32,8 @@ onValue(reference, (snapshot) => {
       gioitinh: gioitinh,
       nghenghiep: nghenghiep,
       ngaysinh: ngaysinh,
+      thaotac: thaotac,
+      trangthai: trangthai,
     });
   });
 
