@@ -99,17 +99,17 @@ function TickBlue() {
   }
   return (
     <Flex
-      w="100%"
+      w="60%"
       h="100%"
       alignItems="flex-start"
       justifyContent="center"
-      mb={{ base: "30px", md: "60px" }}
-      px={{ base: "25px", md: "0px" }}
-      mt={{ base: "40px", md: "14vh" }}
+      mt={{ base: "20px", md: "12vh" }}
       flexDirection="column"
       borderRadius={20}
+      backgroundColor="white"
+      
     >
-      <Box me="auto" marginLeft={100}>
+      <Box me="auto" marginLeft={200} marginTop={5}>
         <Heading color={textColor} fontSize="36px">
           Đơn xác nhận danh tính
         </Heading>
@@ -129,7 +129,7 @@ function TickBlue() {
         maxW="100%"
         background="transparent"
         borderRadius="15px"
-        marginLeft={100}
+        marginLeft={200}
       >
         <Flex
           align="center"
