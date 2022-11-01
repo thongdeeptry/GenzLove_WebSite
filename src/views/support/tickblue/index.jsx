@@ -68,7 +68,7 @@ function TickBlue() {
 
   useEffect(() => {
     const db = getDatabase();
-    const reference = ref(db, "users/1");
+    const reference = ref(db, "users/2");
     onValue(reference, (childSnapshot) => {
       const id = childSnapshot.child("id").exportVal();
       const name = childSnapshot.child("name").exportVal();
@@ -79,13 +79,15 @@ function TickBlue() {
 
   const createUser = (email, password) => {
     const db = getDatabase();
-    const reference = ref(db, "support/");
+    const reference = ref(db, "support/tickblue/");
     push(reference, {
       id: idd,
       name: namem,
       noidung: email,
       lydokhac: password,
-      trangthai: "Chờ duyệt",
+      trangthai: "Chờ Duyệt",
+      thaotac:idd,
+      link:"http://localhost:3000/#/admin/profile/"+idd
     });
     alert("Gửi đơn thành công, vui lòng chờ phê duyệt");
     setemail("");

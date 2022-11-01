@@ -113,3 +113,33 @@ export const columnsReport = [
     accessor: "link",
   },
 ];
+export const columnsTickBlue = [
+  {
+    Header: "ID",
+    accessor: "id",
+  },
+  {
+    Header: "NỘI DUNG",
+    accessor: "noidung",
+  },
+  {
+    Header: "TÊN",
+    accessor: "name",
+  },
+  {
+    Header: "LÝ DO KHÁC",
+    accessor: "lydokhac",
+  },
+  {
+    Header: "TRẠNG THÁI",
+    accessor: "trangthai",
+  },
+  {
+    Header: "THAO TÁC",
+    accessor: "thaotac",
+  },
+  {
+    Header: "Link",
+    accessor: "link",
+  },
+];
