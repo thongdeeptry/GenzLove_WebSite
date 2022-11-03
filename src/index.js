@@ -7,6 +7,7 @@ import AdminLayout from "layouts/admin";
 import RTLLayout from "layouts/rtl";
 import ManagerLayout from "layouts/manager";
 import SupportLayout from "layouts/support";
+import MessLayout from "layouts/messenger"
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "theme/theme";
 import { ThemeEditorProvider } from "@hypertheme-editor/chakra-ui";
@@ -22,6 +23,7 @@ ReactDOM.render(
             <Route path={`/rtl`} component={RTLLayout} />
             <Route path={`/manager`} component={ManagerLayout} />
             <Route path={`/support`} component={SupportLayout} />
+            <Route path={`/messenger`} component={MessLayout} />
             <Redirect from="/" to="/admin" />
           </Switch>
         </HashRouter>

@@ -43,7 +43,7 @@ export default function HeaderLinks(props) {
   const [period, setperiod] = useState("");
   const app = initializeApp(firebaseConfig);
   if (!app.length) {
-    console.log("Kết nối thành công");
+
   }
   const auth = getAuth(app);
   const user = "4";
@@ -92,7 +92,7 @@ export default function HeaderLinks(props) {
   const buttonMove = () => {
     window.location = "http://localhost:3000/#/admin/profile/" + period;
   };
-  console.log(period + " --------------> " + name + " ---------- > " + avt);
+ 
 
   return (
     <Flex

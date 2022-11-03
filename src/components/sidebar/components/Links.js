@@ -51,7 +51,8 @@ export function SidebarLinks(props) {
         route.layout === "/admin" ||
         route.layout === "/auth" ||
         route.layout === "/rtl" ||
-        route.layout === "/manager"
+        route.layout === "/manager"||
+        route.layout === "/messenger"
       ) {
         return (
           <NavLink key={index} to={route.layout + route.path}>

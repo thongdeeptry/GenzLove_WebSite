@@ -2,7 +2,7 @@ import { doc, onSnapshot } from "firebase/firestore";
 import React, { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../context/AuthContext";
 import { ChatContext } from "../context/ChatContext";
-import { db } from "../firebase";
+import { db } from "../../../config";
 
 const Chats = () => {
   const [chats, setChats] = useState([]);
@@ -23,7 +23,7 @@ const Chats = () => {
 
     currentUser.uid && getChats();
   }, [currentUser.uid]);
-
+  console.log(currentUser.uid)
   const handleSelect = (u) => {
     dispatch({ type: "CHANGE_USER", payload: u });
   };

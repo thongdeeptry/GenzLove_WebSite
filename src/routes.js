@@ -21,6 +21,7 @@ import SignInCentered from "views/auth/signIn";
 import SignupCentered from "views/auth/signup";
 import Manager from "views/manager";
 import TickBlue from "views/support/tickblue";
+import messenger from "./views/messenger/App"
 const routes = [
   {
     name: "Trang Chủ",
@@ -36,13 +37,6 @@ const routes = [
     icon: <Icon as={MdBarChart} width="20px" height="20px" color="inherit" />,
     component: NFTMarketplace,
     secondary: true,
-  },
-  {
-    name: "Data Tables",
-    layout: "/admin",
-    icon: <Icon as={MdBarChart} width="20px" height="20px" color="inherit" />,
-    path: "/data-tables",
-    component: DataTables,
   },
   {
     name: "Trang Cá Nhân",
@@ -78,6 +72,13 @@ const routes = [
     path: "/tickblue",
     icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
     component: TickBlue,
+  },
+  {
+    name: "Messenger",
+    layout: "/messenger",
+    path: "/chat",
+    icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
+    component: messenger,
   },
 ];
 

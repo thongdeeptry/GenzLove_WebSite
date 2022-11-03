@@ -11,17 +11,17 @@ const Chat = () => {
 
   return (
     <div className="chat">
-      <div className="chatInfo">
-        <span>Ngô thành thoong</span>
-        <div className="chatIcons">
-          <img src={Cam} alt="" />
-          <img src={Add} alt="" />
-          <img src={More} alt="" />
-        </div>
+    <div className="chatInfo">
+      <span>Ngô Thành Thông</span>
+      <div className="chatIcons">
+        <img src={Cam} alt="" />
+        <img src={Add} alt="" />
+        <img src={More} alt="" />
       </div>
-      <Messages />
-      <Input/>
     </div>
+    <Messages />
+    <Input/>
+  </div>
   );
 };
 

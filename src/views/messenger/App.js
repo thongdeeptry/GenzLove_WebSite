@@ -1,13 +1,15 @@
+import React from "react";
 import Messenger from "./mess";
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
-import { useContext } from "react";
-import { AuthContext } from "./context/AuthContext";
+import { AuthContextProvider } from "./context/AuthContext";
+import { ChatContextProvider } from "./context/ChatContext";
+const messenger=()=>{
+    <AuthContextProvider>
+      <ChatContextProvider>
+        <React.StrictMode>
+          <Messenger />
+        </React.StrictMode>
+      </ChatContextProvider>
+    </AuthContextProvider>
 
-function App() {
-  const { currentUser } = useContext(AuthContext);
-  return (
-    <Messenger />
-  );
 }
-
-export default App;
+export default messenger

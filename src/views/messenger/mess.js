@@ -1,9 +1,8 @@
-import React from 'react'
+import React,{useContext} from 'react'
 import Sidebar from './components/Sidebar'
 import Chat from './components/Chat'
-
-function Messenger () {
-  
+import {AuthContext} from './context/AuthContext'
+const Messenger =()=> {
   console.log("ALOOOOO MESS NHẮN TIN ")
   return (
     <div className='home'>
