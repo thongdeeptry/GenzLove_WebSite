@@ -14,13 +14,6 @@ export const ChatContextProvider = ({ children }) => {
     user: {},
   };
 
-  let myRe = /profile.*/;
-  const myArray = myRe.exec(window.location.href);
-  console.log("The value of lastIndex is " + myArray);
-  let rgid = /^profile.(.*)/;
-  const idLocation = rgid.exec(myArray);
-  console.log("id cua usser " + idLocation[1]);
-
   const chatReducer = (state, action) => {
     switch (action.type) {
       case "CHANGE_USER":
