@@ -21,7 +21,7 @@ import SignInCentered from "views/auth/signIn";
 import SignupCentered from "views/auth/signup";
 import Manager from "views/manager";
 import TickBlue from "views/support/tickblue";
-import messenger from "./views/messenger/App"
+import messenger from "views/messenger/App";
 const routes = [
   {
     name: "Trang Chủ",

@@ -1,8 +1,10 @@
 import React from "react";
 import Messenger from "./mess";
+import "./style.scss";
 import { AuthContextProvider } from "./context/AuthContext";
 import { ChatContextProvider } from "./context/ChatContext";
-const messenger=()=>{
+const messenger = () => {
+  return (
     <AuthContextProvider>
       <ChatContextProvider>
         <React.StrictMode>
@@ -10,6 +12,6 @@ const messenger=()=>{
         </React.StrictMode>
       </ChatContextProvider>
     </AuthContextProvider>
-
-}
-export default messenger
+  );
+};
+export default messenger;

@@ -1,21 +1,21 @@
 @mixin mobile {
-  @media screen and (max-width: 480px) {
+  @media screen and (max-width: "100%") {
     @content;
   }
 }
 @mixin tablet {
-  @media screen and (max-width: 768px) {
+  @media screen and (max-width: "100%") {
     @content;
   }
 }
 @mixin laptop {
-  @media screen and (max-width: 1200px) {
+  @media screen and (max-width: "100%") {
     @content;
   }
 }
 
 .formContainer {
-  background-color: #a7bcff;
+  background-color: #e94057;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -34,7 +34,6 @@
       color: #5d5b8d;
       font-weight: bold;
       font-size: 24px;
-
     }
 
     .title {
@@ -50,15 +49,15 @@
       input {
         padding: 15px;
         border: none;
-        width: 250px;
-        border-bottom: 1px solid #a7bcff;
+        width: 400px;
+        border-bottom: 1px solid #e94057;
         &::placeholder {
           color: rgb(175, 175, 175);
         }
       }
 
       button {
-        background-color: #7b96ec;
+        background-color: #e94057;
         color: white;
         padding: 10px;
         font-weight: bold;
@@ -70,7 +69,7 @@
         display: flex;
         align-items: center;
         gap: 10px;
-        color: #8da4f1;
+        color: #e94057;
         font-size: 12px;
         cursor: pointer;
 
@@ -80,7 +79,7 @@
       }
     }
     p {
-      color: #5d5b8d;
+      color: #e94057;
       font-size: 12px;
       margin-top: 10px;
     }
@@ -88,7 +87,6 @@
 }
 
 .home {
-  background-color: #a7bcff;
   height: 100vh;
   display: flex;
   align-items: center;
@@ -97,16 +95,17 @@
   .container {
     border: 1px solid white;
     border-radius: 10px;
-    width: 65%;
-    height: 80%;
+    width: 100%;
+    height: 100%;
     display: flex;
     overflow: hidden;
     @include tablet {
-     width: 90%;
+      width: 100%;
     }
 
     .sidebar {
       flex: 1;
+      width: 100px;
       background-color: #3e3c61;
       position: relative;
 
@@ -139,7 +138,7 @@
           }
 
           button {
-            background-color: #5d5b8d;
+            background-color: #e94057;
             color: #ddddf7;
             font-size: 10px;
             border: none;
@@ -206,7 +205,7 @@
 
       .chatInfo {
         height: 50px;
-        background-color: #5d5b8d;
+        background-color: #e94057;
         display: flex;
         align-items: center;
         justify-content: space-between;
@@ -227,7 +226,7 @@
       .messages {
         background-color: #ddddf7;
         padding: 10px;
-        height: calc(100% - 160px);
+        height: calc(100% - 100px);
         overflow: scroll;
 
         .message {
@@ -272,7 +271,7 @@
             .messageContent {
               align-items: flex-end;
               p {
-                background-color: #8da4f1;
+                background-color: #e94057;
                 color: white;
                 border-radius: 10px 0px 10px 10px;
               }
@@ -284,13 +283,12 @@
       .input {
         height: 50px;
         background-color: white;
-        padding: 10px;
         display: flex;
         align-items: center;
         justify-content: space-between;
-
+        padding: 20px;
         input {
-          width: 100%;
+          width: 90%;
           border: none;
           outline: none;
           color: #2f2d52;
@@ -315,7 +313,7 @@
             border: none;
             padding: 10px 15px;
             color: white;
-            background-color: #8da4f1;
+            background-color: #e94057;
             cursor: pointer;
           }
         }
