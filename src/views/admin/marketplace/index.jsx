@@ -1,3 +1,5 @@
+/** @format */
+
 import React, { useEffect, useState } from "react";
 
 // Chakra imports
@@ -55,7 +57,7 @@ export default function Marketplace() {
     if (!congchung.length) {
       setCongChung(petsCongChung);
     }
-  }, [follow.length]);
+  });
   const buttonMove = (idk) => {
     window.location = "http://localhost:3000/#/admin/profile/" + idk;
   };

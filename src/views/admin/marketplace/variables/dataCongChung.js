@@ -1,3 +1,5 @@
+/** @format */
+
 import { initializeApp } from "firebase/app";
 import {
   getDatabase,
@@ -29,15 +31,6 @@ onValue(reference, (snapshot) => {
     const nghe = childSnapshot.child("nghenghiep").val();
     const id = childSnapshot.child("id").val();
     const tick = childSnapshot.child("tick").val();
-    // setname(namepr);
-    // setavt(avtpr);
-    // setdiachi(diachipr);
-    // settuoi(tuoipr);
-    // setgioitinh(gioitinhpr);
-    // setngaysinh(ngaysinhpr);
-    // setfollow(fl);
-    // setnghe(nghe);
-    // setidk(id);
     if (tick == "true") {
       data.push({
         id: id,

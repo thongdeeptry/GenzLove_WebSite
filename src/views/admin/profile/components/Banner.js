@@ -1,3 +1,5 @@
+/** @format */
+
 // Chakra imports
 import {
   Avatar,
@@ -123,7 +125,7 @@ export default function Banner(props) {
           Trang này đã được xác minh
         </Text>
       </Flex>
-      <Text color={textColorSecondary} fontSize="sm">
+      <Text color={"#E94057"} fontSize="sm">
         {job}
       </Text>
       <Flex w="max-content" mx="auto" mt="26px">
@@ -137,7 +139,7 @@ export default function Banner(props) {
         </Flex>
         <Flex mx="auto" me="60px" align="center" direction="column">
           <Text color={textColorPrimary} fontSize="xl" fontWeight="700">
-            {followw}
+            {followers}
           </Text>
           <Text color={textColorSecondary} fontSize="sm" fontWeight="400">
             Theo dõi

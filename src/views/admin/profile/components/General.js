@@ -1,3 +1,5 @@
+/** @format */
+
 // Chakra imports
 import { SimpleGrid, Text, useColorModeValue } from "@chakra-ui/react";
 // Custom components
@@ -35,11 +37,11 @@ export default function GeneralInformation(props) {
   let myRe = /profile.*/;
   const myArray = myRe.exec(window.location.href);
   console.log("The value of lastIndex is " + myArray);
-  let rgid = /[0-9]{1,11111}/;
+  let rgid = /^profile.(.*)/;
   const idLocation = rgid.exec(myArray);
-  console.log("id cua usser " + idLocation);
+  console.log("id cua usserrregerere" + idLocation);
   const auth = getAuth(app);
-  const user = idLocation;
+  const user = idLocation[1];
   const db = getDatabase();
 
   useEffect(() => {

@@ -1,3 +1,5 @@
+/** @format */
+
 // Chakra Imports
 import {
   Avatar,
@@ -35,18 +37,17 @@ import { ThemeEditor } from "./ThemeEditor";
 export default function HeaderLinks(props) {
   const { secondary } = props;
   // Kết noiói với firebase
-  const [name, setname] = useState();
-  const [avt, setavt] = useState();
+  const [name, setname] = useState("");
+  const [avt, setavt] = useState("");
   const [nam, setnam] = useState("");
   const [gio, setgio] = useState("");
   const [giay, setgiay] = useState("");
   const [period, setperiod] = useState("");
   const app = initializeApp(firebaseConfig);
   if (!app.length) {
-
   }
   const auth = getAuth(app);
-  const user = "4";
+  let user = "gvTOTpTPlBeWru0CzN3UxCWkgLM2";
   const db = getDatabase();
   const navbarIcon = useColorModeValue("gray.400", "white");
   let menuBg = useColorModeValue("white", "navy.800");
@@ -92,7 +93,6 @@ export default function HeaderLinks(props) {
   const buttonMove = () => {
     window.location = "http://localhost:3000/#/admin/profile/" + period;
   };
- 
 
   return (
     <Flex
@@ -225,14 +225,20 @@ export default function HeaderLinks(props) {
           minW={{ base: "unset" }}
           maxW={{ base: "360px", md: "unset" }}
         >
-          <Image src={navImage} borderRadius="16px" mb="28px" />
+          {/* <Image src='../../../' borderRadius="16px" mb="28px" /> */}
           <Flex flexDirection="column">
-            <Link w="100%" href="http://localhost:3000/">
+            <Link
+              w="100%"
+              href="https://play.google.com/store/apps/details?id=com.nttsoftware.FruitConnect"
+            >
               <Button w="100%" h="44px" mb="10px" variant="brand">
                 Tải GenzLove dành cho Android tại đây
               </Button>
             </Link>
-            <Link w="100%" href="https://ch.play">
+            <Link
+              w="100%"
+              href="https://play.google.com/store/apps/details?id=com.nttsoftware.FruitConnect"
+            >
               <Button
                 w="100%"
                 h="44px"

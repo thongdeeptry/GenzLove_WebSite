@@ -1,3 +1,5 @@
+/** @format */
+
 // Chakra imports
 import { Box, Text, useColorModeValue } from "@chakra-ui/react";
 // Custom components
@@ -13,10 +15,10 @@ export default function Information(props) {
   return (
     <Card bg={bg} {...rest}>
       <Box>
-        <Text fontWeight='500' color={textColorSecondary} fontSize='sm'>
+        <Text fontWeight="500" color={textColorSecondary} fontSize="sm">
           {title}
         </Text>
-        <Text color={textColorPrimary} fontWeight='500' fontSize='md'>
+        <Text color={textColorPrimary} fontWeight="500" fontSize="md">
           {value}
         </Text>
       </Box>

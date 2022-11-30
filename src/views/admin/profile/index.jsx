@@ -1,3 +1,5 @@
+/** @format */
+
 import { Box, Grid } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import { initializeApp } from "firebase/app";
@@ -22,21 +24,22 @@ export default function Overview() {
   const [tuoi, settuoi] = useState();
   const [diachi, setdiachi] = useState();
   const [ngaysinh, setngaysinh] = useState();
-  const [gioitinh, setgioitinh] = useState();
-  const [sothich, setsothich] = useState();
+  const [nghe, setnghe] = useState();
+  const [follow, setFollow] = useState();
   const app = initializeApp(firebaseConfig);
   if (!app.length) {
     console.log("Kết nối thành công");
     console.log("Link : " + window.location.href);
   }
+
   let myRe = /profile.*/;
   const myArray = myRe.exec(window.location.href);
   console.log("The value of lastIndex is " + myArray);
-  let rgid = /[0-9]{1,11111}/;
+  let rgid = /^profile.(.*)/;
   const idLocation = rgid.exec(myArray);
-  console.log("id cua usser " + idLocation);
+  console.log("id cua usserrregerere" + idLocation);
   const auth = getAuth(app);
-  const user = idLocation;
+  const user = idLocation[1];
   const db = getDatabase();
 
   useEffect(() => {
@@ -47,14 +50,15 @@ export default function Overview() {
       const tuoipr = childSnapshot.child("tuoi").val();
       const diachipr = childSnapshot.child("diachi").val();
       const ngaysinhpr = childSnapshot.child("ngaysinh").val();
-      const gioitinhpr = childSnapshot.child("gioitinh").val();
-
+      const nghenghiep = childSnapshot.child("nghenghiep").val();
+      const fl = childSnapshot.child("follow").val();
       setname(namepr);
       setavt(avtpr);
       setdiachi(diachipr);
       settuoi(tuoipr);
-      setgioitinh(gioitinhpr);
+      setnghe(nghenghiep);
       setngaysinh(ngaysinhpr);
+      setFollow(fl);
     });
   }, []);
   return (
@@ -66,9 +70,9 @@ export default function Overview() {
         banner={banner}
         avatar={avt}
         name={name}
-        job={ngaysinh}
+        job={nghe}
         posts={tuoi}
-        followers="106.064"
+        followers={follow}
         following="1"
       />
       {/* <Storage
