@@ -7,11 +7,12 @@ import AdminLayout from "layouts/admin";
 import RTLLayout from "layouts/rtl";
 import ManagerLayout from "layouts/manager";
 import SupportLayout from "layouts/support";
-import MessLayout from "layouts/messenger"
+import MessLayout from "layouts/messenger";
+import CallLayout from "layouts/call";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "theme/theme";
 import { ThemeEditorProvider } from "@hypertheme-editor/chakra-ui";
-
+import LiveStreamLayout from "layouts/livestream";
 ReactDOM.render(
   <ChakraProvider theme={theme}>
     <React.StrictMode>
@@ -24,6 +25,8 @@ ReactDOM.render(
             <Route path={`/manager`} component={ManagerLayout} />
             <Route path={`/support`} component={SupportLayout} />
             <Route path={`/messenger`} component={MessLayout} />
+            <Route path={`/call`} component={CallLayout} />
+            <Route path={`/livestream`} component={LiveStreamLayout} />
             <Redirect from="/" to="/admin" />
           </Switch>
         </HashRouter>

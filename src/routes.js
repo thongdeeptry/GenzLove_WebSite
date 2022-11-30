@@ -22,6 +22,8 @@ import SignupCentered from "views/auth/signup";
 import Manager from "views/manager";
 import TickBlue from "views/support/tickblue";
 import messenger from "views/messenger/App";
+import CallVideo from "views/call/callVideo";
+import LiveStream from "views/livestream/liveStream";
 const routes = [
   {
     name: "Trang Chủ",
@@ -79,6 +81,20 @@ const routes = [
     path: "/chat",
     icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
     component: messenger,
+  },
+  {
+    name: "CallVideo",
+    layout: "/call",
+    path: "/video",
+    icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
+    component: CallVideo,
+  },
+  {
+    name: "LiveStream",
+    layout: "/livestream",
+    path: "/call",
+    icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
+    component: CallVideo,
   },
 ];
 

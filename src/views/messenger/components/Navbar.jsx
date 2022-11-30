@@ -27,6 +27,7 @@ const Navbar = () => {
       setid(idr);
     });
   }, []);
+  
   return (
     <div className="navbar">
       <span className="logo">
