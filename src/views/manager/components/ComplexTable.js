@@ -64,7 +64,7 @@ export default function ColumnsTable(props) {
     prepareRow,
     initialState,
   } = tableInstance;
-  initialState.pageSize = 5;
+  initialState.pageSize = 1000;
 
   const customStyles = {
     content: {

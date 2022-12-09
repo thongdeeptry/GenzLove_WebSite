@@ -12,13 +12,21 @@ import {
   useColorModeValue,
   Button,
   Alert,
+  Image,
 } from "@chakra-ui/react";
 import React, { useMemo, useState } from "react";
 import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../../../config";
-import { getDatabase, ref, remove, set, onValue } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  remove,
+  set,
+  onValue,
+  update,
+} from "firebase/database";
 import * as firebase from "firebase/database";
 import {
   useGlobalFilter,
@@ -66,7 +74,7 @@ export default function ColumnsTable(props) {
   const [modalIsOpen, setIsOpen] = React.useState(false);
   const [idx, setidx] = useState();
   const [noidungx, setnoidungx] = useState();
-  const [thaotacx, setthaotacx] = useState();
+  const [thaotacx, setthaotacx] = useState(false);
 
   const openModal = () => {
     setIsOpen(true);
@@ -103,39 +111,19 @@ export default function ColumnsTable(props) {
   const buttonMove = (data) => {
     window.location = "" + data;
   };
-  const Yes = (idd, ndx, ttx) => {
+  const Yes = (idd) => {
     setIsOpen(true);
     setidx(idd);
-    setnoidungx(ndx);
-    setthaotacx(ttx);
   };
 
   const updateData = () => {
     setIsOpen(false);
     const db = getDatabase();
-    const reference = ref(db, "reports/" + idx);
-    onValue(reference, (childSnapshot) => {
-      const id = childSnapshot.child("id").exportVal();
-      const noidung = childSnapshot.child("noidung").exportVal();
-      const id_send = childSnapshot.child("id_send").exportVal();
-      const id_vipham = childSnapshot.child("id_vipham").exportVal();
-      const trangthai = noidungx;
-      const phanhoi = childSnapshot.child("phanhoi").exportVal();
-      const link = childSnapshot.child("link").exportVal();
-      const thaotac = childSnapshot.child("thaotac").exportVal();
-      set(reference, {
-        id: id,
-        noidung: noidung,
-        id_send: id_send,
-        id_vipham: id_vipham,
-        trangthai: trangthai,
-        phanhoi: phanhoi,
-        link: link,
-        thaotac: thaotac,
-      });
-      console.log(thaotacx + " thành công");
-      alert(thaotacx + " đơn báo cáo thành công");
-      window.location = "http://localhost:3000/#/manager/settings";
+    const reference = ref(db, "post/" + idx);
+    remove(reference).then(() => {
+      console.log("Xoá bài viết thành công");
+      alert("Xoá bài viết thành công");
+      window.location = "http://localhost:3000/";
     });
   };
   const textColor = useColorModeValue("secondaryGray.900", "white");
@@ -158,7 +146,7 @@ export default function ColumnsTable(props) {
           Thông báo từ GenzLove
         </h2>
 
-        <div>Bạn có chắc chắn muốn {thaotacx} nội dung này ?</div>
+        <div>Bạn có chắc chắn muốn xoá nội dung này ?</div>
         <Flex direction={"row"} justifyContent={"space-between"}>
           <button style={style} onClick={updateData}>
             Có
@@ -173,9 +161,9 @@ export default function ColumnsTable(props) {
           fontWeight="700"
           lineHeight="100%"
         >
-          Quản lý báo cáo
+          Quản lý Bài Viết
         </Text>
-        <Menu />
+        <Button onClick={() => setthaotacx(true)}>Xem thêm</Button>
       </Flex>
       <Table {...getTableProps()} variant="simple" color="gray.500" mb="24px">
         <Thead>
@@ -214,36 +202,25 @@ export default function ColumnsTable(props) {
                         {cell.value}
                       </Text>
                     );
-                  } else if (cell.column.Header === "TRẠNG THÁI") {
+                  } else if (cell.column.Header === "ẢNH") {
                     data = (
-                      <Flex align="center">
-                        <Icon
-                          w="24px"
-                          h="24px"
-                          me="5px"
-                          color={
-                            cell.value === "Hoàn Tất"
-                              ? "green.500"
-                              : cell.value === "Hủy Yêu Cầu"
-                              ? "red.500"
-                              : cell.value === "Chưa Xử Lý"
-                              ? "orange.500"
-                              : null
-                          }
-                          as={
-                            cell.value === "Hoàn Tất"
-                              ? MdCheckCircle
-                              : cell.value === "Hủy Yêu Cầu"
-                              ? MdCancel
-                              : cell.value === "Chưa Xử Lý"
-                              ? MdOutlineError
-                              : null
-                          }
-                        />
-                        <Text color={textColor} fontSize="sm" fontWeight="700">
-                          {cell.value}
-                        </Text>
-                      </Flex>
+                      <Image
+                        src={cell.value}
+                        w={150}
+                        h={100}
+                        borderRadius={15}
+                      />
+                    );
+                  } else if (cell.column.Header === "TÊN") {
+                    data = (
+                      <Text
+                        color={textColor}
+                        fontSize="sm"
+                        fontWeight="700"
+                        w={150}
+                      >
+                        {cell.value}
+                      </Text>
                     );
                   } else if (cell.column.Header === "NỘI DUNG") {
                     data = (
@@ -251,13 +228,13 @@ export default function ColumnsTable(props) {
                         {cell.value}
                       </Text>
                     );
-                  } else if (cell.column.Header === "ID SEND") {
+                  } else if (cell.column.Header === "SỐ LƯỢT THÍCH") {
                     data = (
                       <Text color={textColor} fontSize="sm" fontWeight="700">
                         {cell.value}
                       </Text>
                     );
-                  } else if (cell.column.Header === "ID REPORT") {
+                  } else if (cell.column.Header === "UID") {
                     data = (
                       <Text color={textColor} fontSize="sm" fontWeight="700">
                         {cell.value}
@@ -266,24 +243,7 @@ export default function ColumnsTable(props) {
                   } else if (cell.column.Header === "THAO TÁC") {
                     data = (
                       <Flex align="center">
-                        <Button
-                          onClick={() => Yes(cell.value, "Hoàn Tất", "Xử lý")}
-                        >
-                          Xử Lý
-                        </Button>
-                        <Button
-                          onClick={() => Yes(cell.value, "Hủy Yêu Cầu", "Hủy")}
-                        >
-                          Hủy
-                        </Button>
-                      </Flex>
-                    );
-                  } else if (cell.column.Header === "Link") {
-                    data = (
-                      <Flex align="center">
-                        <Button onClick={() => buttonMove(cell.value)}>
-                          Xem
-                        </Button>
+                        <Button onClick={() => Yes(cell.value)}>Xoá</Button>
                       </Flex>
                     );
                   }

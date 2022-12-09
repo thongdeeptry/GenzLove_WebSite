@@ -18,7 +18,14 @@ import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../../../config";
-import { getDatabase, ref, remove, set, onValue } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  remove,
+  set,
+  onValue,
+  update,
+} from "firebase/database";
 import * as firebase from "firebase/database";
 import {
   useGlobalFilter,
@@ -103,40 +110,22 @@ export default function ColumnsTable(props) {
   const buttonMove = (data) => {
     window.location = "" + data;
   };
-  const Yes = (idd, ndx, ttx) => {
+  const Yes = (idd, ndx) => {
     setIsOpen(true);
     setidx(idd);
     setnoidungx(ndx);
-    setthaotacx(ttx);
   };
 
   const updateData = () => {
     setIsOpen(false);
     const db = getDatabase();
-    const reference = ref(db, "reports/" + idx);
-    onValue(reference, (childSnapshot) => {
-      const id = childSnapshot.child("id").exportVal();
-      const noidung = childSnapshot.child("noidung").exportVal();
-      const id_send = childSnapshot.child("id_send").exportVal();
-      const id_vipham = childSnapshot.child("id_vipham").exportVal();
-      const trangthai = noidungx;
-      const phanhoi = childSnapshot.child("phanhoi").exportVal();
-      const link = childSnapshot.child("link").exportVal();
-      const thaotac = childSnapshot.child("thaotac").exportVal();
-      set(reference, {
-        id: id,
-        noidung: noidung,
-        id_send: id_send,
-        id_vipham: id_vipham,
-        trangthai: trangthai,
-        phanhoi: phanhoi,
-        link: link,
-        thaotac: thaotac,
-      });
-      console.log(thaotacx + " thành công");
-      alert(thaotacx + " đơn báo cáo thành công");
-      window.location = "http://localhost:3000/#/manager/settings";
+    const reference = ref(db, "livestream/" + idx);
+    update(reference, {
+      trangthai: noidungx,
     });
+    console.log(noidungx + " thành công");
+    alert(noidungx + " live thành công");
+    window.location = "http://localhost:3000/";
   };
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
@@ -173,7 +162,7 @@ export default function ColumnsTable(props) {
           fontWeight="700"
           lineHeight="100%"
         >
-          Quản lý báo cáo
+          Quản lý LiveStream
         </Text>
         <Menu />
       </Flex>
@@ -208,9 +197,43 @@ export default function ColumnsTable(props) {
               <Tr {...row.getRowProps()} key={index}>
                 {row.cells.map((cell, index) => {
                   let data = "";
-                  if (cell.column.Header === "ID") {
+                  if (cell.column.Header === "CHANNEL") {
                     data = (
                       <Text color={textColor} fontSize="sm" fontWeight="700">
+                        {cell.value}
+                      </Text>
+                    );
+                  } else if (cell.column.Header === "UID") {
+                    data = (
+                      <Text color={textColor} fontSize="sm" fontWeight="700">
+                        {cell.value}
+                      </Text>
+                    );
+                  } else if (cell.column.Header === "TÊN") {
+                    data = (
+                      <Text
+                        color={textColor}
+                        fontSize="sm"
+                        fontWeight="700"
+                        w={150}
+                      >
+                        {cell.value}
+                      </Text>
+                    );
+                  } else if (cell.column.Header === "LƯỢT XEM") {
+                    data = (
+                      <Text color={textColor} fontSize="sm" fontWeight="700">
+                        {cell.value}
+                      </Text>
+                    );
+                  } else if (cell.column.Header === "TOKEN") {
+                    data = (
+                      <Text
+                        color={textColor}
+                        fontSize="sm"
+                        fontWeight="700"
+                        w={200}
+                      >
                         {cell.value}
                       </Text>
                     );
@@ -222,20 +245,20 @@ export default function ColumnsTable(props) {
                           h="24px"
                           me="5px"
                           color={
-                            cell.value === "Hoàn Tất"
+                            cell.value === "Hoạt Động"
                               ? "green.500"
-                              : cell.value === "Hủy Yêu Cầu"
+                              : cell.value === "Khoá"
                               ? "red.500"
-                              : cell.value === "Chưa Xử Lý"
+                              : cell.value === "Chờ Duyệt"
                               ? "orange.500"
                               : null
                           }
                           as={
-                            cell.value === "Hoàn Tất"
+                            cell.value === "Hoạt Động"
                               ? MdCheckCircle
-                              : cell.value === "Hủy Yêu Cầu"
+                              : cell.value === "Khoá"
                               ? MdCancel
-                              : cell.value === "Chưa Xử Lý"
+                              : cell.value === "Chờ Duyệt"
                               ? MdOutlineError
                               : null
                           }
@@ -245,44 +268,14 @@ export default function ColumnsTable(props) {
                         </Text>
                       </Flex>
                     );
-                  } else if (cell.column.Header === "NỘI DUNG") {
-                    data = (
-                      <Text color={textColor} fontSize="sm" fontWeight="700">
-                        {cell.value}
-                      </Text>
-                    );
-                  } else if (cell.column.Header === "ID SEND") {
-                    data = (
-                      <Text color={textColor} fontSize="sm" fontWeight="700">
-                        {cell.value}
-                      </Text>
-                    );
-                  } else if (cell.column.Header === "ID REPORT") {
-                    data = (
-                      <Text color={textColor} fontSize="sm" fontWeight="700">
-                        {cell.value}
-                      </Text>
-                    );
                   } else if (cell.column.Header === "THAO TÁC") {
                     data = (
                       <Flex align="center">
-                        <Button
-                          onClick={() => Yes(cell.value, "Hoàn Tất", "Xử lý")}
-                        >
-                          Xử Lý
+                        <Button onClick={() => Yes(cell.value, "Khoá")}>
+                          Khoá
                         </Button>
-                        <Button
-                          onClick={() => Yes(cell.value, "Hủy Yêu Cầu", "Hủy")}
-                        >
-                          Hủy
-                        </Button>
-                      </Flex>
-                    );
-                  } else if (cell.column.Header === "Link") {
-                    data = (
-                      <Flex align="center">
-                        <Button onClick={() => buttonMove(cell.value)}>
-                          Xem
+                        <Button onClick={() => Yes(cell.value, "Hoạt Động")}>
+                          Mở
                         </Button>
                       </Flex>
                     );

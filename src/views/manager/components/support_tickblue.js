@@ -18,7 +18,14 @@ import ReactDOM from "react-dom";
 import Modal from "react-modal";
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../../../config";
-import { getDatabase, ref, remove, set, onValue, update } from "firebase/database";
+import {
+  getDatabase,
+  ref,
+  remove,
+  set,
+  onValue,
+  update,
+} from "firebase/database";
 import * as firebase from "firebase/database";
 import {
   useGlobalFilter,
@@ -98,7 +105,7 @@ export default function ColumnsTable(props) {
     prepareRow,
     initialState,
   } = tableInstance;
-  initialState.pageSize = 5;
+  initialState.pageSize = 1000;
 
   const buttonMove = (data) => {
     window.location = "" + data;
@@ -114,14 +121,16 @@ export default function ColumnsTable(props) {
     setIsOpen(false);
     const db = getDatabase();
     const reference = ref(db, "users/" + idx);
-    onValue(reference, (childSnapshot) => {
-      update(reference, {
-        tick:"true"
-      });
-      console.log(thaotacx + " thành công");
-      alert(thaotacx + " đơn báo cáo thành công");
-      window.location = "http://localhost:3000/";
+    update(reference, {
+      tick: "true",
     });
+    const reference2 = ref(db, "support/tickblue/" + idx);
+    update(reference2, {
+      trangthai: noidungx,
+    });
+    console.log(thaotacx + " thành công");
+    alert(thaotacx + " đơn báo cáo thành công");
+    window.location = "http://localhost:3000/";
   };
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");
@@ -232,7 +241,12 @@ export default function ColumnsTable(props) {
                     );
                   } else if (cell.column.Header === "NỘI DUNG") {
                     data = (
-                      <Text color={textColor} fontSize="sm" fontWeight="700" w={200} >
+                      <Text
+                        color={textColor}
+                        fontSize="sm"
+                        fontWeight="700"
+                        w={200}
+                      >
                         {cell.value}
                       </Text>
                     );
@@ -244,7 +258,12 @@ export default function ColumnsTable(props) {
                     );
                   } else if (cell.column.Header === "LÝ DO KHÁC") {
                     data = (
-                      <Text color={textColor} fontSize="sm" fontWeight="700" w={200}>
+                      <Text
+                        color={textColor}
+                        fontSize="sm"
+                        fontWeight="700"
+                        w={200}
+                      >
                         {cell.value}
                       </Text>
                     );
