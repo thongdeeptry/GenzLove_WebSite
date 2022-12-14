@@ -28,18 +28,18 @@ const routes = [
   {
     name: "Trang Chủ",
     layout: "/admin",
-    path: "/default",
+    path: "/home",
     icon: <Icon as={MdHome} width="20px" height="20px" color="inherit" />,
-    component: MainDashboard,
-  },
-  {
-    name: "Top GenzLove",
-    layout: "/admin",
-    path: "/nft-marketplace",
-    icon: <Icon as={MdBarChart} width="20px" height="20px" color="inherit" />,
     component: NFTMarketplace,
-    secondary: true,
   },
+  // {
+  //   name: "Top GenzLove",
+  //   layout: "/admin",
+  //   path: "/nft-marketplace",
+  //   icon: <Icon as={MdBarChart} width="20px" height="20px" color="inherit" />,
+  //   component: NFTMarketplace,
+  //   secondary: true,
+  // },
   {
     name: "Trang Cá Nhân",
     layout: "/admin",

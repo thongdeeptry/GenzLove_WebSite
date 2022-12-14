@@ -24,7 +24,7 @@ onValue(reference, (snapshot) => {
     const name = childSnapshot.child("name").exportVal();
     const follow = childSnapshot.child("follow").exportVal();
     const avt = childSnapshot.child("avt").exportVal();
-    if (follow > 10) {
+    if (follow > 2) {
       data.push({
         id: id,
         name: name,

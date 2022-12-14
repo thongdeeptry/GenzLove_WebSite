@@ -26,6 +26,8 @@ export default function Overview() {
   const [ngaysinh, setngaysinh] = useState();
   const [nghe, setnghe] = useState();
   const [follow, setFollow] = useState();
+  const [sopost, setsopost] = useState();
+  const [dfollow, setdFollow] = useState();
   const app = initializeApp(firebaseConfig);
   if (!app.length) {
     console.log("Kết nối thành công");
@@ -60,6 +62,15 @@ export default function Overview() {
       setngaysinh(ngaysinhpr);
       setFollow(fl);
     });
+    const references = ref(db, "post/" + user);
+    onValue(references, (childSnapshot) => {
+      setsopost(childSnapshot.size);
+      console.log("SO POST" + sopost);
+    });
+    const referencesd = ref(db, "favourite/" + user);
+    onValue(referencesd, (childSnapshot) => {
+      setdFollow(childSnapshot.size);
+    });
   }, []);
   return (
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>
@@ -71,9 +82,9 @@ export default function Overview() {
         avatar={avt}
         name={name}
         job={nghe}
-        posts={tuoi}
+        posts={sopost}
         followers={follow}
-        following="1"
+        following={dfollow}
       />
       {/* <Storage
           gridArea={{ base: "2 / 1 / 3 / 2", lg: "1 / 2 / 2 / 3" }}

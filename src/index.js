@@ -21,13 +21,12 @@ ReactDOM.render(
           <Switch>
             <Route path={`/auth`} component={AuthLayout} />
             <Route path={`/admin`} component={AdminLayout} />
-            <Route path={`/rtl`} component={RTLLayout} />
             <Route path={`/manager`} component={ManagerLayout} />
             <Route path={`/support`} component={SupportLayout} />
             <Route path={`/messenger`} component={MessLayout} />
             <Route path={`/call`} component={CallLayout} />
             <Route path={`/livestream`} component={LiveStreamLayout} />
-            <Redirect from="/" to="/admin" />
+            <Redirect from="/" to="/auth" />
           </Switch>
         </HashRouter>
       </ThemeEditorProvider>

@@ -32,24 +32,21 @@ export default function Banner(props) {
   const [tuoi, settuoi] = useState();
   const [diachi, setdiachi] = useState();
   const [followw, setfolloww] = useState();
-  const app = initializeApp(firebaseConfig);
-  if (!app.length) {
-    console.log("Kết nối thành công");
-  }
+  initializeApp(firebaseConfig);
+
   let myRe = /profile.*/;
   const myArray = myRe.exec(window.location.href);
   console.log("The value of lastIndex is " + myArray);
-  let rgid = /[0-9]{1,11111}/;
+  let rgid = /^profile.(.*)/;
   const idLocation = rgid.exec(myArray);
 
-  const auth = getAuth(app);
-  const user = idLocation;
+  const user = idLocation[1];
   const db = getDatabase();
 
   useEffect(() => {
     const reference = ref(db, "users/" + user);
     onValue(reference, (childSnapshot) => {
-      const tick = childSnapshot.child("tick").val();
+      const tickd = childSnapshot.child("tick").val();
       const namepr = childSnapshot.child("name").val();
       const avtpr = childSnapshot.child("avt").val();
       const tuoipr = childSnapshot.child("tuoi").val();
@@ -64,9 +61,10 @@ export default function Banner(props) {
       setdiachi(diachipr);
       settuoi(tuoipr);
       setfolloww(fl);
-      setTick(tick);
+      setTick(tickd);
+      console.log("tickkkkkkkkkksdddddd " + user);
     });
-  }, []);
+  });
   console.log("tickkkkkkkkkk " + tick);
   return (
     <Card mb={{ base: "0px", lg: "20px" }} align="center">

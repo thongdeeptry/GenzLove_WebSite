@@ -34,6 +34,12 @@ function Signup() {
     console.log("Kết nối thành công");
   }
   const auth = getAuth(app);
+  try {
+    const userd = getAuth().currentUser.uid;
+    if (userd.length > 8) {
+      window.location = "http://localhost:3000/#/admin/home";
+    }
+  } catch (error) {}
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
 

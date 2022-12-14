@@ -41,7 +41,7 @@ function TickBlue() {
   if (!app.length) {
     console.log("Kết nối thành công");
   }
-  const auth = getAuth(app);
+  const auth = getAuth().currentUser.uid;
   const [email, setemail] = useState();
   const [password, setpassword] = useState();
   const [idd, setidd] = useState();
@@ -68,7 +68,7 @@ function TickBlue() {
 
   useEffect(() => {
     const db = getDatabase();
-    const reference = ref(db, "users/2");
+    const reference = ref(db, "users/" + auth);
     onValue(reference, (childSnapshot) => {
       const id = childSnapshot.child("id").exportVal();
       const name = childSnapshot.child("name").exportVal();
@@ -79,15 +79,15 @@ function TickBlue() {
 
   const createUser = (email, password) => {
     const db = getDatabase();
-    const reference = ref(db, "support/tickblue/");
-    push(reference, {
-      id: idd,
+    const reference = ref(db, "support/tickblue/" + auth);
+    set(reference, {
+      id: auth,
       name: namem,
       noidung: email,
       lydokhac: password,
       trangthai: "Chờ Duyệt",
-      thaotac:idd,
-      link:"http://localhost:3000/#/admin/profile/"+idd
+      thaotac: auth,
+      link: "http://localhost:3000/#/admin/profile/" + auth,
     });
     alert("Gửi đơn thành công, vui lòng chờ phê duyệt");
     setemail("");
@@ -109,7 +109,6 @@ function TickBlue() {
       flexDirection="column"
       borderRadius={20}
       backgroundColor="white"
-      
     >
       <Box me="auto" marginLeft={200} marginTop={5}>
         <Heading color={textColor} fontSize="36px">

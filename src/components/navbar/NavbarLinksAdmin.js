@@ -47,7 +47,7 @@ export default function HeaderLinks(props) {
   if (!app.length) {
   }
   const auth = getAuth(app);
-  let user = "gvTOTpTPlBeWru0CzN3UxCWkgLM2";
+  let user = getAuth().currentUser.uid;
   const db = getDatabase();
   const navbarIcon = useColorModeValue("gray.400", "white");
   let menuBg = useColorModeValue("white", "navy.800");
@@ -66,7 +66,7 @@ export default function HeaderLinks(props) {
     signOut(auth)
       .then(() => {
         alert("Đăng xuất thành công");
-        window.location = "http://localhost:3000/#/admin/default";
+        window.location = "http://localhost:3000/";
       })
       .catch((error) => {
         // An error happened.

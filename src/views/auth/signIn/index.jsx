@@ -54,6 +54,12 @@ function SignIn() {
   );
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
+  try {
+    const userd = getAuth().currentUser.uid;
+    if (userd.length > 8) {
+      window.location = "http://localhost:3000/#/admin/home";
+    }
+  } catch (error) {}
   //LOGIN FIREBASE GENZLOVE
   const LoginUser = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
@@ -62,7 +68,7 @@ function SignIn() {
         const user = getAuth().currentUser.uid;
         console.log("UID - " + user);
         alert("Đăng nhập thành công");
-        window.location = "http://localhost:3000/#/admin/default";
+        window.location = "http://localhost:3000/#/admin/home";
       })
       .catch((error) => {
         alert("Đăng nhập thất bại");
