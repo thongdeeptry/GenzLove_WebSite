@@ -32,7 +32,7 @@ export default function NFT(props) {
           <Image
             src={image}
             w={{ base: "100%", "3xl": "100%" }}
-            h={{ base: "100%", "3xl": "100%" }}
+            h={150}
             borderRadius="20px"
           />
           <Button
@@ -73,17 +73,10 @@ export default function NFT(props) {
             mb="auto"
           >
             <Flex direction="column">
-              <Flex flexDirection={"row"}>
+              <Flex flexDirection={"row"} w={"100%"}>
                 <Text
                   color={textColor}
-                  fontSize={{
-                    base: "xl",
-                    md: "lg",
-                    lg: "lg",
-                    xl: "lg",
-                    "2xl": "md",
-                    "3xl": "lg",
-                  }}
+                  fontSize={15}
                   mb="5px"
                   fontWeight="bold"
                   me="14px"

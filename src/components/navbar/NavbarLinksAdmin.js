@@ -229,7 +229,7 @@ export default function HeaderLinks(props) {
           <Flex flexDirection="column">
             <Link
               w="100%"
-              href="https://play.google.com/store/apps/details?id=com.nttsoftware.FruitConnect"
+              href="https://play.google.com/store/apps/details?id=com.thanhthong0312.GiaoDienApp"
             >
               <Button w="100%" h="44px" mb="10px" variant="brand">
                 Tải GenzLove dành cho Android tại đây
@@ -237,7 +237,7 @@ export default function HeaderLinks(props) {
             </Link>
             <Link
               w="100%"
-              href="https://play.google.com/store/apps/details?id=com.nttsoftware.FruitConnect"
+              href="https://play.google.com/store/apps/details?id=com.thanhthong0312.GiaoDienApp"
             >
               <Button
                 w="100%"
