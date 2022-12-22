@@ -135,7 +135,7 @@ export default function ColumnsTable(props) {
       });
       console.log(thaotacx + " thành công");
       alert(thaotacx + " đơn báo cáo thành công");
-      window.location = "http://localhost:3000/#/manager/settings";
+      window.location = "https://genzlove.onrender.com/#/manager/settings";
     });
   };
   const textColor = useColorModeValue("secondaryGray.900", "white");

@@ -59,7 +59,7 @@ export default function Marketplace() {
     }
   });
   const buttonMove = (idk) => {
-    window.location = "http://localhost:3000/#/admin/profile/" + idk;
+    window.location = "https://genzlove.onrender.com/#/admin/profile/" + idk;
   };
   console.log("User pets: ", follow);
   return (

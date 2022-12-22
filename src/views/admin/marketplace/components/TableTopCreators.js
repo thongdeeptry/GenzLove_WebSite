@@ -43,7 +43,7 @@ function TopCreatorTable(props) {
   const textColor = useColorModeValue("navy.700", "white");
   const textColorSecondary = useColorModeValue("secondaryGray.600", "white");
   const buttonMove = (data) => {
-    window.location = "http://localhost:3000/#/admin/profile/" + data;
+    window.location = "https://genzlove.onrender.com/#/admin/profile/" + data;
   };
   return (
     <>

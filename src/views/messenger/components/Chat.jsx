@@ -36,16 +36,15 @@ const Chat = () => {
     });
   }, []);
   console.log("=======SDFGÙYDHGFHKFỲGEKUH====> " + name);
-  const Call=()=>{
-    window.location = "http://localhost:3000/#/call/video"
-  }
+  const Call = () => {
+    window.location = "https://genzlove.onrender.com/#/call/video";
+  };
   return (
     <div className="chat">
       <div className="chatInfo">
         <span>{name}</span>
         <div className="chatIcons">
-          
-          <img src={Cam} alt="" onClick={Call}/>
+          <img src={Cam} alt="" onClick={Call} />
           <img src={Add} alt="" />
           <img src={More} alt="" />
         </div>

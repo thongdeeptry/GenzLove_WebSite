@@ -66,7 +66,7 @@ export default function HeaderLinks(props) {
     signOut(auth)
       .then(() => {
         alert("Đăng xuất thành công");
-        window.location = "http://localhost:3000/";
+        window.location = "https://genzlove.onrender.com/";
       })
       .catch((error) => {
         // An error happened.
@@ -91,7 +91,7 @@ export default function HeaderLinks(props) {
     }, 1000);
   }, []);
   const buttonMove = () => {
-    window.location = "http://localhost:3000/#/admin/profile/" + period;
+    window.location = "https://genzlove.onrender.com/#/admin/profile/" + period;
   };
 
   return (

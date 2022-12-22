@@ -25,8 +25,11 @@ export function SidebarLinks(props) {
     console.log("quyen " + quyen);
   }, []);
   const loc = window.location.href;
-  if (loc == "http://localhost:3000/#/manager/settings" && quyen === 0) {
-    window.location = "http://localhost:3000/#/admin/home";
+  if (
+    loc == "https://genzlove.onrender.com/#/manager/settings" &&
+    quyen === 0
+  ) {
+    window.location = "https://genzlove.onrender.com/#/admin/home";
     alert("Bạn không đủ quyền truy cập vào trang này");
   }
   let location = useLocation();

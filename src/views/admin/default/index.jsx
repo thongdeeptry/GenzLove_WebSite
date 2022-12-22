@@ -72,7 +72,7 @@ export default function UserReports() {
     console.log("Link : " + window.location.href);
   }
   const LiveStream = () => {
-    window.location = "http://localhost:3000/#/livestream/call";
+    window.location = "https://genzlove.onrender.com/#/livestream/call";
   };
   return (
     <Box pt={{ base: "130px", md: "80px", xl: "80px" }}>

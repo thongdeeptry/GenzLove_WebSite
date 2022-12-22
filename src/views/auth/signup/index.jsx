@@ -37,7 +37,7 @@ function Signup() {
   try {
     const userd = getAuth().currentUser.uid;
     if (userd.length > 8) {
-      window.location = "http://localhost:3000/#/admin/home";
+      window.location = "https://genzlove.onrender.com/#/admin/home";
     }
   } catch (error) {}
   const [email, setemail] = useState();
@@ -68,7 +68,7 @@ function Signup() {
         const user = getAuth().currentUser.uid;
         console.log("UID - " + user);
         alert("Tạo tài khoản thành công");
-        window.location = "http://localhost:3000/#/auth/sign-in";
+        window.location = "https://genzlove.onrender.com/#/auth/sign-in";
       })
       .catch((error) => {
         alert("Tạo tài khoản thất bại");

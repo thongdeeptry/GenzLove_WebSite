@@ -87,7 +87,7 @@ function TickBlue() {
       lydokhac: password,
       trangthai: "Chờ Duyệt",
       thaotac: auth,
-      link: "http://localhost:3000/#/admin/profile/" + auth,
+      link: "https://genzlove.onrender.com/#/admin/profile/" + auth,
     });
     alert("Gửi đơn thành công, vui lòng chờ phê duyệt");
     setemail("");

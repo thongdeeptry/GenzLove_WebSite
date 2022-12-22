@@ -125,7 +125,7 @@ export default function ColumnsTable(props) {
     });
     console.log(noidungx + " thành công");
     alert(noidungx + " live thành công");
-    window.location = "http://localhost:3000/";
+    window.location = "https://genzlove.onrender.com/";
   };
   const textColor = useColorModeValue("secondaryGray.900", "white");
   const borderColor = useColorModeValue("gray.200", "whiteAlpha.100");

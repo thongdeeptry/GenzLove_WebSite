@@ -121,7 +121,7 @@ export default function ColumnsTable(props) {
       });
       console.log(thaotacx + " thành công");
       alert(thaotacx + " tài khoản thành công");
-      window.location = "http://localhost:3000/";
+      window.location = "https://genzlove.onrender.com/";
     });
   };
   return (
