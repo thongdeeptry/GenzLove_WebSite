@@ -12,3 +12,18 @@ export const tableColumnsTopCreators = [
     accessor: "id",
   },
 ];
+
+export const tableColumnsTopLike = [
+  {
+    Header: "Tên",
+    accessor: "name",
+  },
+  {
+    Header: "Like",
+    accessor: "like",
+  },
+  {
+    Header: "Xem",
+    accessor: "id",
+  },
+];

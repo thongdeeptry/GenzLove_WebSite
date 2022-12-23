@@ -206,7 +206,7 @@ export default function ColumnsTable(props) {
                     data = (
                       <Image
                         src={cell.value}
-                        w={150}
+                        w={110}
                         h={100}
                         borderRadius={15}
                       />
@@ -217,7 +217,7 @@ export default function ColumnsTable(props) {
                         color={textColor}
                         fontSize="sm"
                         fontWeight="700"
-                        w={150}
+                        w={100}
                       >
                         {cell.value}
                       </Text>

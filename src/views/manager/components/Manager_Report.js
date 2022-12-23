@@ -226,7 +226,7 @@ export default function ColumnsTable(props) {
                               ? "green.500"
                               : cell.value === "Hủy Yêu Cầu"
                               ? "red.500"
-                              : cell.value === "Chưa Xử Lý"
+                              : cell.value === "Chờ Xử Lý"
                               ? "orange.500"
                               : null
                           }
@@ -235,7 +235,7 @@ export default function ColumnsTable(props) {
                               ? MdCheckCircle
                               : cell.value === "Hủy Yêu Cầu"
                               ? MdCancel
-                              : cell.value === "Chưa Xử Lý"
+                              : cell.value === "Chờ Xử Lý"
                               ? MdOutlineError
                               : null
                           }

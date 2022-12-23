@@ -218,18 +218,18 @@ export default function ColumnsTable(props) {
                           color={
                             cell.value === "Hoàn Tất"
                               ? "green.500"
-                              : cell.value === "Từ Chối"
+                              : cell.value === "Hủy"
                               ? "red.500"
-                              : cell.value === "Chờ Duyệt"
+                              : cell.value === "Chờ Xử Lý"
                               ? "orange.500"
                               : null
                           }
                           as={
                             cell.value === "Hoàn Tất"
                               ? MdCheckCircle
-                              : cell.value === "Từ Chối"
+                              : cell.value === "Hủy"
                               ? MdCancel
-                              : cell.value === "Chờ Duyệt"
+                              : cell.value === "Chờ Xử Lý"
                               ? MdOutlineError
                               : null
                           }
