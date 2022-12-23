@@ -17,6 +17,7 @@ import {
 // Custom components
 import Banner from "views/admin/marketplace/components/Banner";
 import TableTopCreators from "views/admin/marketplace/components/TableTopCreators";
+import TopCreatorLike from "./components/TableTopLike";
 import HistoryItem from "views/admin/marketplace/components/HistoryItem";
 import NFT from "components/card/NFT";
 import Card from "components/card/Card.js";
@@ -36,15 +37,17 @@ import Avatar2 from "assets/img/avatars/avatar2.png";
 import Avatar3 from "assets/img/avatars/avatar3.png";
 import Avatar4 from "assets/img/avatars/avatar4.png";
 import { follow as petsFollow } from "views/admin/marketplace/variables/topFollow";
+import { like as petsLike } from "views/admin/marketplace/variables/topLike";
 import { congchung as petsCongChung } from "views/admin/marketplace/variables/dataCongChung";
 import { tableColumnsTopCreators } from "views/admin/marketplace/variables/tableColumnsTopCreators";
+import { tableColumnsTopLike } from "./variables/tableColumnsTopCreators";
 
 export default function Marketplace() {
   const app = initializeApp(firebaseConfig);
   if (!app.length) {
     console.log("Kết nối thành công");
   }
-
+  const [like, setlike] = useState(petsLike);
   const [follow, setFollow] = useState(petsFollow);
   const [congchung, setCongChung] = useState(petsCongChung);
   const textColor = useColorModeValue("secondaryGray.900", "white");
@@ -56,6 +59,9 @@ export default function Marketplace() {
     }
     if (!congchung.length) {
       setCongChung(petsCongChung);
+    }
+    if (!like.length) {
+      setlike(petsLike);
     }
   });
   const buttonMove = (idk) => {
@@ -128,6 +134,17 @@ export default function Marketplace() {
             <TableTopCreators
               tableData={follow}
               columnsData={tableColumnsTopCreators}
+            />
+          </Card>
+        </Flex>
+        <Flex
+          flexDirection="column"
+          gridArea={{ xl: "1 / 3 / 2 / 4", "2xl": "1 / 2 / 2 / 3" }}
+        >
+          <Card px="0px" mb="20px">
+            <TableTopCreators
+              tableData={like}
+              columnsData={tableColumnsTopLike}
             />
           </Card>
         </Flex>

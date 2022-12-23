@@ -15,8 +15,8 @@ export const tableColumnsTopCreators = [
 
 export const tableColumnsTopLike = [
   {
-    Header: "Tên",
-    accessor: "name",
+    Header: "Nội Dung",
+    accessor: "noidung",
   },
   {
     Header: "Like",
