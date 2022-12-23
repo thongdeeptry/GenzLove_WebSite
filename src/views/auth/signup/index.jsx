@@ -120,30 +120,6 @@ function Signup() {
           me="auto"
           mb={{ base: "20px", md: "auto" }}
         >
-          <Button
-            fontSize="sm"
-            me="0px"
-            mb="26px"
-            py="15px"
-            h="50px"
-            borderRadius="16px"
-            bg={googleBg}
-            color={googleText}
-            fontWeight="500"
-            _hover={googleHover}
-            _active={googleActive}
-            _focus={googleActive}
-          >
-            <Icon as={FcGoogle} w="20px" h="20px" me="10px" />
-            Đăng ký bằng Google
-          </Button>
-          <Flex align="center" mb="25px">
-            <HSeparator />
-            <Text color="gray.400" mx="14px">
-              hoặc
-            </Text>
-            <HSeparator />
-          </Flex>
           <FormControl>
             <FormLabel
               display="flex"
