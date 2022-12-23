@@ -250,7 +250,15 @@ export default function ColumnsTable(props) {
                   } else if (cell.column.Header === "THAO TÁC") {
                     data = (
                       <Flex align="center">
-                        <Button>Sửa</Button>
+                        <Button
+                          onClick={() =>
+                            (window.location =
+                              "https://genzlove.onrender.com/#/update/info/" +
+                              cell.value)
+                          }
+                        >
+                          Sửa
+                        </Button>
                         <Button onClick={() => Yes(cell.value, "Khóa", "Khóa")}>
                           Khóa
                         </Button>
