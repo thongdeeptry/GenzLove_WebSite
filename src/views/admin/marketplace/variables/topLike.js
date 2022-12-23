@@ -18,18 +18,15 @@ onValue(reference, (snapshot) => {
       const like = childSnapshot.child("like").exportVal();
       const user = childSnapshot.child("user").exportVal();
       const noidung = childSnapshot.child("noidung").exportVal();
-
-      data.push({
-        id: id,
-        image: image,
-        name: name,
-        user: user,
-        noidung: noidung,
-        like: like,
-        thaotac: user + "/" + id,
-      });
+      if (like > 3) {
+        data.push({
+          id: id,
+          noidung: noidung,
+          like: like,
+        });
+      }
     });
   });
-  console.log("Post data: ", data);
+  console.log("like data: ", data);
 });
 export const like = data;
