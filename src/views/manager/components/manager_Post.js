@@ -229,7 +229,12 @@ export default function ColumnsTable(props) {
                     );
                   } else if (cell.column.Header === "NỘI DUNG") {
                     data = (
-                      <Text color={textColor} fontSize="sm" fontWeight="700">
+                      <Text
+                        color={textColor}
+                        fontSize="sm"
+                        fontWeight="700"
+                        w={100}
+                      >
                         {cell.value}
                       </Text>
                     );

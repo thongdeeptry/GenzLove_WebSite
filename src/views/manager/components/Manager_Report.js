@@ -253,13 +253,23 @@ export default function ColumnsTable(props) {
                     );
                   } else if (cell.column.Header === "ID SEND") {
                     data = (
-                      <Text color={textColor} fontSize="sm" fontWeight="700">
+                      <Text
+                        color={textColor}
+                        fontSize="sm"
+                        fontWeight="700"
+                        w={50}
+                      >
                         {cell.value}
                       </Text>
                     );
                   } else if (cell.column.Header === "ID REPORT") {
                     data = (
-                      <Text color={textColor} fontSize="sm" fontWeight="700">
+                      <Text
+                        color={textColor}
+                        fontSize="sm"
+                        fontWeight="700"
+                        w={50}
+                      >
                         {cell.value}
                       </Text>
                     );

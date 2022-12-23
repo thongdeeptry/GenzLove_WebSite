@@ -262,7 +262,7 @@ export default function ColumnsTable(props) {
                         color={textColor}
                         fontSize="sm"
                         fontWeight="700"
-                        w={200}
+                        w={100}
                       >
                         {cell.value}
                       </Text>
