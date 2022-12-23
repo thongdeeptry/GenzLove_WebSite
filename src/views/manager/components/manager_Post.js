@@ -211,7 +211,7 @@ export default function ColumnsTable(props) {
                     data = (
                       <Image
                         src={cell.value}
-                        w={110}
+                        w={100}
                         h={100}
                         borderRadius={15}
                       />
