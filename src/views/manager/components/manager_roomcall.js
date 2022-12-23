@@ -199,7 +199,12 @@ export default function ColumnsTable(props) {
                   let data = "";
                   if (cell.column.Header === "CHANNEL") {
                     data = (
-                      <Text color={textColor} fontSize="sm" fontWeight="700">
+                      <Text
+                        color={textColor}
+                        fontSize="sm"
+                        fontWeight="700"
+                        w={50}
+                      >
                         {cell.value}
                       </Text>
                     );
@@ -215,7 +220,7 @@ export default function ColumnsTable(props) {
                         color={textColor}
                         fontSize="sm"
                         fontWeight="700"
-                        w={150}
+                        w={100}
                       >
                         {cell.value}
                       </Text>
@@ -232,7 +237,7 @@ export default function ColumnsTable(props) {
                         color={textColor}
                         fontSize="sm"
                         fontWeight="700"
-                        w={200}
+                        w={50}
                       >
                         {cell.value}
                       </Text>

@@ -198,7 +198,12 @@ export default function ColumnsTable(props) {
                   let data = "";
                   if (cell.column.Header === "ID") {
                     data = (
-                      <Text color={textColor} fontSize="sm" fontWeight="700">
+                      <Text
+                        color={textColor}
+                        fontSize="sm"
+                        fontWeight="700"
+                        w={20}
+                      >
                         {cell.value}
                       </Text>
                     );
@@ -236,7 +241,12 @@ export default function ColumnsTable(props) {
                     );
                   } else if (cell.column.Header === "UID") {
                     data = (
-                      <Text color={textColor} fontSize="sm" fontWeight="700">
+                      <Text
+                        color={textColor}
+                        fontSize="sm"
+                        fontWeight="700"
+                        w={30}
+                      >
                         {cell.value}
                       </Text>
                     );

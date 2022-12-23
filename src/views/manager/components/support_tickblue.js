@@ -275,9 +275,7 @@ export default function ColumnsTable(props) {
                         >
                           Xử Lý
                         </Button>
-                        <Button
-                          onClick={() => Yes(cell.value, "Từ Chối", "Hủy")}
-                        >
+                        <Button onClick={() => Yes(cell.value, "Hủy", "Hủy")}>
                           Hủy
                         </Button>
                       </Flex>
