@@ -120,6 +120,17 @@ export default function Marketplace() {
             </SimpleGrid>
           </Flex>
         </Flex>
+        <Flex
+          flexDirection="column"
+          gridArea={{ xl: "1 / 3 / 2 / 4", "2xl": "1 / 2 / 2 / 3" }}
+        >
+          <Card px="0px" mb="20px">
+            <TableTopCreators
+              tableData={follow}
+              columnsData={tableColumnsTopCreators}
+            />
+          </Card>
+        </Flex>
       </Grid>
       {/* Delete Product */}
     </Box>
