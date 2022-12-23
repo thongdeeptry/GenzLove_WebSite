@@ -24,7 +24,6 @@ onValue(reference, (snapshot) => {
       const id = childSnapshot.child("id").exportVal();
       const name = childSnapshot.child("noidung").exportVal();
       const follow = childSnapshot.child("like").exportVal();
-      const avt = childSnapshot.child("avt").exportVal();
       if (follow > 2) {
         data.push({
           id: id,
@@ -34,6 +33,6 @@ onValue(reference, (snapshot) => {
       }
     });
   });
-  console.log("Report data: ", data);
+  console.log("like data: ", data);
 });
 export const like = data;

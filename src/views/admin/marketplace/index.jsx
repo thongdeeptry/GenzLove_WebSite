@@ -67,7 +67,7 @@ export default function Marketplace() {
   const buttonMove = (idk) => {
     window.location = "https://genzlove.onrender.com/#/admin/profile/" + idk;
   };
-  console.log("User pets: ", follow);
+  console.log("likelike pets: ", like);
   return (
     <Box pt={{ base: "180px", md: "80px", xl: "80px" }}>
       {/* Main Fields */}
@@ -134,17 +134,6 @@ export default function Marketplace() {
             <TableTopCreators
               tableData={follow}
               columnsData={tableColumnsTopCreators}
-            />
-          </Card>
-        </Flex>
-        <Flex
-          flexDirection="column"
-          gridArea={{ xl: "1 / 3 / 2 / 4", "2xl": "1 / 2 / 2 / 3" }}
-        >
-          <Card px="0px" mb="20px">
-            <TopCreatorLike
-              tableData={like}
-              columnsData={tableColumnsTopLike}
             />
           </Card>
         </Flex>
