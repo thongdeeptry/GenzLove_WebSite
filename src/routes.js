@@ -24,6 +24,7 @@ import TickBlue from "views/support/tickblue";
 import messenger from "views/messenger/App";
 import CallVideo from "views/call/callVideo";
 import LiveStream from "views/livestream/liveStream";
+import UpdateInfo from "views/update/UpdateInfo";
 const routes = [
   {
     name: "Trang Chủ",
@@ -95,6 +96,13 @@ const routes = [
     path: "/call",
     icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
     component: CallVideo,
+  },
+  {
+    name: "Update",
+    layout: "/update",
+    path: "/info",
+    icon: <Icon as={MdLock} width="20px" height="20px" color="inherit" />,
+    component: UpdateInfo,
   },
 ];
 

@@ -9,6 +9,7 @@ import ManagerLayout from "layouts/manager";
 import SupportLayout from "layouts/support";
 import MessLayout from "layouts/messenger";
 import CallLayout from "layouts/call";
+import UpdateInfo from "views/update/UpdateInfo";
 import { ChakraProvider } from "@chakra-ui/react";
 import theme from "theme/theme";
 import { ThemeEditorProvider } from "@hypertheme-editor/chakra-ui";
@@ -26,6 +27,7 @@ ReactDOM.render(
             <Route path={`/messenger`} component={MessLayout} />
             <Route path={`/call`} component={CallLayout} />
             <Route path={`/livestream`} component={LiveStreamLayout} />
+            <Route path={`/update`} component={UpdateInfo} />
             <Redirect from="/" to="/auth" />
           </Switch>
         </HashRouter>
