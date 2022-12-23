@@ -93,7 +93,7 @@ function UpdateInfo() {
 
   const createUser = () => {
     const db = getDatabase();
-    const reference = ref(db, "user/" + idLocation[1]);
+    const reference = ref(db, "users/" + idLocation[1]);
     update(reference, {
       name: name,
       gioitinh: gioitinh,
@@ -179,7 +179,9 @@ function UpdateInfo() {
             size="lg"
             h={20}
             value={name}
-            onChange={(event) => setname(event.target.value)}
+            onChange={(event) => {
+              setname(event.target.value);
+            }}
           />
           <FormLabel
             ms="4px"
@@ -203,7 +205,9 @@ function UpdateInfo() {
               type={"text"}
               variant="auth"
               value={diachi}
-              onChange={(event) => setdiachi(event.target.value)}
+              onChange={(event) => {
+                setdiachi(event.target.value);
+              }}
             />
           </InputGroup>
           <FormLabel
@@ -228,7 +232,9 @@ function UpdateInfo() {
               type={"text"}
               variant="auth"
               value={nghenghiep}
-              onChange={(event) => setnghenghiep(event.target.value)}
+              onChange={(event) => {
+                setnghenghiep(event.target.value);
+              }}
             />
           </InputGroup>
           <FormLabel
@@ -253,7 +259,9 @@ function UpdateInfo() {
               type={"text"}
               variant="auth"
               value={gioitinh}
-              onChange={(event) => setgioitinh(event.target.value)}
+              onChange={(event) => {
+                setgioitinh(event.target.value);
+              }}
             />
           </InputGroup>
           <FormLabel
@@ -278,7 +286,9 @@ function UpdateInfo() {
               type={"text"}
               variant="auth"
               value={tick}
-              onChange={(event) => settick(event.target.value)}
+              onChange={(event) => {
+                settick(event.target.value);
+              }}
             />
           </InputGroup>
           <FormLabel
@@ -303,7 +313,9 @@ function UpdateInfo() {
               type={"text"}
               variant="auth"
               value={phanquyen}
-              onChange={(event) => setphanquyen(event.target.value)}
+              onChange={(event) => {
+                setphanquyen(event.target.value);
+              }}
             />
           </InputGroup>
           <Flex justifyContent="space-between" align="center" mb="24px">
@@ -333,7 +345,7 @@ function UpdateInfo() {
             mb="24px"
             onClick={createUser}
           >
-            Gửi đơn
+            Sửa
           </Button>
         </FormControl>
       </Flex>
