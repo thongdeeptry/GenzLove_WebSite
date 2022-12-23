@@ -103,6 +103,7 @@ function UpdateInfo() {
       diachi: diachi,
     });
     alert("Cập nhật thông tin người dùng thành công");
+    window.location("https://genzlove.onrender.com/#/admin/home");
   };
 
   return (

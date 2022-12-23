@@ -123,7 +123,7 @@ export default function ColumnsTable(props) {
     remove(reference).then(() => {
       console.log("Xoá bài viết thành công");
       alert("Xoá bài viết thành công");
-      window.location = "https://genzlove.onrender.com/";
+      window.location = "https://genzlove.onrender.com/#/admin/home";
     });
   };
   const textColor = useColorModeValue("secondaryGray.900", "white");
