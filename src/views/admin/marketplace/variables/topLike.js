@@ -1,14 +1,5 @@
 import { initializeApp } from "firebase/app";
-import {
-  getDatabase,
-  ref,
-  onValue,
-  query,
-  orderByChild,
-  orderByValue,
-  orderByKey,
-  limitToLas,
-} from "firebase/database";
+import { getDatabase, ref, onValue } from "firebase/database";
 import { firebaseConfig } from "../../../../config";
 const app = initializeApp(firebaseConfig);
 const data = [];
@@ -19,20 +10,26 @@ if (!app.length) {
 const db = getDatabase();
 const reference = ref(db, "post");
 onValue(reference, (snapshot) => {
-  snapshot.forEach((childSnapshotq) => {
-    childSnapshotq.forEach((childSnapshot) => {
+  snapshot.forEach((childSnapshot1) => {
+    childSnapshot1.forEach((childSnapshot) => {
       const id = childSnapshot.child("id").exportVal();
-      const name = childSnapshot.child("noidung").exportVal();
-      const follow = childSnapshot.child("like").exportVal();
-      if (follow > 2) {
-        data.push({
-          id: id,
-          noidung: name,
-          like: follow,
-        });
-      }
+      const image = childSnapshot.child("image").exportVal();
+      const name = childSnapshot.child("name").exportVal();
+      const like = childSnapshot.child("like").exportVal();
+      const user = childSnapshot.child("user").exportVal();
+      const noidung = childSnapshot.child("noidung").exportVal();
+
+      data.push({
+        id: id,
+        image: image,
+        name: name,
+        user: user,
+        noidung: noidung,
+        like: like,
+        thaotac: user + "/" + id,
+      });
     });
   });
-  console.log("like data: ", data);
+  console.log("Post data: ", data);
 });
 export const like = data;
