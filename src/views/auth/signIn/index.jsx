@@ -20,6 +20,7 @@ import {
 import { HSeparator } from "components/separator/Separator";
 import { Redirect, Route, Switch } from "react-router-dom";
 import DefaultAuth from "layouts/auth/Default";
+import { getDatabase, ref, onValue, set, push } from "firebase/database";
 // Assets
 import { initializeApp } from "firebase/app";
 import { firebaseConfig } from "../../../config";
@@ -63,6 +64,7 @@ function SignIn() {
     } catch (error) {}
   });
   //LOGIN FIREBASE GENZLOVE
+  const db = getDatabase();
   const LoginUser = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
