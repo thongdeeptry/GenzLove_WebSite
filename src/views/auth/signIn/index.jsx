@@ -61,7 +61,9 @@ function SignIn() {
       if (userd.length > 8) {
         window.location = "https://genzlove.onrender.com/#/admin/home";
       }
-    } catch (error) {}
+    } catch (error) {
+      window.location = "https://genzlove.onrender.com/#/admin/home";
+    }
   });
   //LOGIN FIREBASE GENZLOVE
   const db = getDatabase();
