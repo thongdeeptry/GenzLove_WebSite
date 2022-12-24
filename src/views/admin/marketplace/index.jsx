@@ -59,7 +59,9 @@ export default function Marketplace() {
       if (userd.length < 8) {
         window.location = "https://genzlove.onrender.com/";
       }
-    } catch (error) {}
+    } catch (error) {
+      window.location = "https://genzlove.onrender.com/";
+    }
     if (!follow.length) {
       setFollow(petsFollow);
     }
