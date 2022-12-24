@@ -1,7 +1,7 @@
 /** @format */
 
 import React, { useEffect, useState } from "react";
-
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 // Chakra imports
 import {
   Box,
@@ -54,6 +54,12 @@ export default function Marketplace() {
   const textColorBrand = useColorModeValue("brand.500", "white");
   const dataa = [];
   useEffect(() => {
+    try {
+      const userd = getAuth().currentUser.uid;
+      if (userd.length < 8) {
+        window.location = "https://genzlove.onrender.com/";
+      }
+    } catch (error) {}
     if (!follow.length) {
       setFollow(petsFollow);
     }

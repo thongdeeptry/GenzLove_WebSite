@@ -54,21 +54,31 @@ function SignIn() {
   );
   const [show, setShow] = React.useState(false);
   const handleClick = () => setShow(!show);
-  try {
-    const userd = getAuth().currentUser.uid;
-    if (userd.length > 8) {
-      window.location = "https://genzlove.onrender.com/#/admin/home";
-    }
-  } catch (error) {}
+  useEffect(() => {
+    try {
+      const userd = getAuth().currentUser.uid;
+      if (userd.length > 8) {
+        window.location = "https://genzlove.onrender.com/#/admin/home";
+      }
+    } catch (error) {}
+  });
   //LOGIN FIREBASE GENZLOVE
   const LoginUser = (email, password) => {
     signInWithEmailAndPassword(auth, email, password)
       .then(() => {
         console.log("Đăng nhập thành công");
         const user = getAuth().currentUser.uid;
-        console.log("UID - " + user);
-        alert("Đăng nhập thành công");
-        window.location = "https://genzlove.onrender.com/#/admin/home";
+        const reference = ref(db, "users/" + user);
+        onValue(reference, (childSnapshot) => {
+          const trangthai = childSnapshot.child("trangthai").val();
+          if (trangthai == "Khóa") {
+            alert("Đăng nhập thất bại, Tài khoản của bạn đã bị khóa");
+          } else {
+            console.log("UID - " + user);
+            alert("Đăng nhập thành công");
+            window.location = "https://genzlove.onrender.com/#/admin/home";
+          }
+        });
       })
       .catch((error) => {
         alert("Đăng nhập thất bại");
