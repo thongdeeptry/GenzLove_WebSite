@@ -62,7 +62,7 @@ function SignIn() {
         window.location = "https://genzlove.onrender.com/#/admin/home";
       }
     } catch (error) {}
-  }, []);
+  });
   //LOGIN FIREBASE GENZLOVE
   const db = getDatabase();
   const LoginUser = (email, password) => {
