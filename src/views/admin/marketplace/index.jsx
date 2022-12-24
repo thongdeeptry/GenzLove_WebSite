@@ -56,6 +56,7 @@ export default function Marketplace() {
   useEffect(() => {
     try {
       const userd = getAuth().currentUser.uid;
+      console.log("LOG RA LOGIN " + userd);
       if (userd.length < 8) {
         window.location = "https://genzlove.onrender.com/";
       }
