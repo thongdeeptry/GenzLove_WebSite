@@ -134,7 +134,7 @@ export function SidebarLinks(props) {
       } else if (
         route.layout === "/admin" ||
         route.layout === "/rtl" ||
-        route.layout === "/messenger" ||
+        route.layout === "/messenger"
       ) {
         return (
           <NavLink key={index} to={route.layout + route.path}>
