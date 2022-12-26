@@ -8,6 +8,7 @@ import {
   Text,
   useColorModeValue,
   Image,
+  Button,
 } from "@chakra-ui/react";
 import Card from "components/card/Card.js";
 import React, { useState, useEffect } from "react";
@@ -42,7 +43,9 @@ export default function Banner(props) {
 
   const user = idLocation[1];
   const db = getDatabase();
-
+  const nhantin = () => {
+    window.location = "https://genzlove.onrender.com/#/messenger/chat/" + user;
+  };
   useEffect(() => {
     const reference = ref(db, "users/" + user);
     onValue(reference, (childSnapshot) => {
@@ -150,6 +153,11 @@ export default function Banner(props) {
           <Text color={textColorSecondary} fontSize="sm" fontWeight="400">
             Đang theo dõi
           </Text>
+        </Flex>
+        <Flex mx="auto" align="center" direction="row">
+          <Button w={50} h={50} onClick={nhantin}>
+            Nhắn tin
+          </Button>
         </Flex>
       </Flex>
     </Card>
