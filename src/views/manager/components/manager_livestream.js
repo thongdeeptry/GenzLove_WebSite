@@ -162,7 +162,7 @@ export default function ColumnsTable(props) {
           fontWeight="700"
           lineHeight="100%"
         >
-          Quản lý LiveStream
+          Quản lý LiveStream {data.length}
         </Text>
         <Menu />
       </Flex>
