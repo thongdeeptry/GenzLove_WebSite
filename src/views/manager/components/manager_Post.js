@@ -161,7 +161,7 @@ export default function ColumnsTable(props) {
           fontWeight="700"
           lineHeight="100%"
         >
-          Quản lý Bài Viết
+          Quản lý Bài Viết {data.length}
         </Text>
         <Button onClick={() => setthaotacx(true)}>Xem thêm</Button>
       </Flex>

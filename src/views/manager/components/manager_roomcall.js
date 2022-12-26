@@ -162,7 +162,7 @@ export default function ColumnsTable(props) {
           fontWeight="700"
           lineHeight="100%"
         >
-          Quản lý Phòng Họp
+          Quản lý Phòng Họp {data.length}
         </Text>
         <Menu />
       </Flex>

@@ -173,7 +173,7 @@ export default function ColumnsTable(props) {
           fontWeight="700"
           lineHeight="100%"
         >
-          Quản lý báo cáo
+          Quản lý báo cáo {data.length}
         </Text>
         <Menu />
       </Flex>

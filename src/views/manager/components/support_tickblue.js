@@ -167,7 +167,7 @@ export default function ColumnsTable(props) {
           fontWeight="700"
           lineHeight="100%"
         >
-          Quản lý xác thực người dùng
+          Quản lý xác thực người dùng {data.length}
         </Text>
         <Menu />
       </Flex>
